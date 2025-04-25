@@ -8,6 +8,7 @@ const MensajeNombre = 'Ingrese su nombre';
 const MensajeEdad = 'Ingrese su edad';
 alert(MensajeBienv);
 let imcr = '';
+let imcmenor =0;
 let contMujeres = 0;
 let contHombres = 0;
 let personas = [];
@@ -20,6 +21,13 @@ let contedadm = 0;
 let contpersonas = 0;
 let op =0;
 let age = 0;
+const ImcMenor = function(imc){
+    if (imc<imcmenor){
+        imcmenor=imc;
+    }else{
+        imcmenor=imcmenor;
+    }
+}
 const datos=function(person, sexo){
     let name = prompt(MensajeNombre);
     person.push(name);
@@ -37,25 +45,27 @@ const datos=function(person, sexo){
     let peso = Number(prompt(MensajePeso));
     let altura = Number(prompt(MensajeAltura));
     let imc = peso / (altura ** 2);
+    ImcMenor(imc);
     person.push(imc);
-    let mensajeIMC = `Su IMC es de: . `;
+    let mensajeIMC = `Su IMC es de: ${imc} `;
     if (imc < 19.8) {
         imcr = 'bajo peso';
-        mensajeIMC = '¡Está en bajo peso!';
+        mensajeIMC = `${mensajeIMC}\n¡Está en bajo peso!`;
     } else if (imc >= 19.9 && imc <= 26) {
         imcr = 'peso normal';
-        mensajeIMC = '¡Felicidades! Su peso es normal.';
+        mensajeIMC = `${mensajeIMC}\n¡Felicidades! Su peso es normal.`;
     } else if (imc >= 26.1 && imc <= 29) {
         imcr = 'sobrepeso';
-        mensajeIMC = '¡Tenga precaución! Está en sobrepeso.';
+        mensajeIMC = `${mensajeIMC}\n¡Tenga precaución! Está en sobrepeso.`;
     } else if (imc >= 29.1) {
         imcr = 'obesidad';
-        mensajeIMC = '¡Cuidado! Está en obesidad.';
+        mensajeIMC = `${mensajeIMC}\n¡Cuidado! Está en obesidad.`;
     }
     alert(mensajeIMC);
     person.push(imcr);
     return person;
 }
+co
 do{
     person =[];
     op = Number(prompt(Menu1));
@@ -100,12 +110,14 @@ do{
             break;
         case 4:
             //menores
+
             break;
         case 5:
             //escala de sobrepeso
             break;
         case 6:
             //menor imc
+
             break;
         case 7:
             break;
