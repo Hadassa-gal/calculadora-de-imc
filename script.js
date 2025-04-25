@@ -27,6 +27,7 @@ const ImcMenor = function(imc){
     }else{
         imcmenor=imcmenor;
     }
+    return imcmenor;
 }
 const datos=function(person, sexo){
     let name = prompt(MensajeNombre);
@@ -63,7 +64,7 @@ const datos=function(person, sexo){
     }
     alert(mensajeIMC);
     person.push(imcr);
-    return person;
+    return person,imcmenor,ages;
 }
 co
 do{
@@ -105,19 +106,19 @@ do{
             alert(`Cantidad de mujeres ingresadas: ${contMujeres}\nCantidad de hombres ingresados: ${contHombres}`);
             break;
         case 3:
-            //promediode edades
+            //promedio de edades
             alert(`El promediode edades de las mujeres es: ${contedadf/contpersonas} \nEl promediode edades de los hombres es: ${contedadm/contpersonas}`);
             break;
         case 4:
             //menores
-
+            
             break;
         case 5:
             //escala de sobrepeso
             break;
         case 6:
             //menor imc
-
+            alert(`El menor IMC es de: ${imcmenor}`);
             break;
         case 7:
             break;
