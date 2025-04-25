@@ -7,10 +7,12 @@ const MensajeResul = 'Su IMC es de:';
 const MensajeNombre = 'Ingrese su nombre';
 const MensajeEdad = 'Ingrese su edad';
 alert(MensajeBienv);
+let imcMEnor = 0;
 let imcr = '';
 let imcmenor =0;
 let contMujeres = 0;
 let contHombres = 0;
+let contmenores = 0;
 let personas = [];
 let person =[];
 let continuar = true;
@@ -46,7 +48,7 @@ const datos=function(person, sexo){
     let peso = Number(prompt(MensajePeso));
     let altura = Number(prompt(MensajeAltura));
     let imc = peso / (altura ** 2);
-    ImcMenor(imc);
+    imcMEnor=ImcMenor(imc);
     person.push(imc);
     let mensajeIMC = `Su IMC es de: ${imc} `;
     if (imc < 19.8) {
@@ -64,9 +66,8 @@ const datos=function(person, sexo){
     }
     alert(mensajeIMC);
     person.push(imcr);
-    return person,imcmenor,ages;
+    return person,imcMEnor,ages;
 }
-co
 do{
     person =[];
     op = Number(prompt(Menu1));
@@ -82,14 +83,14 @@ do{
                     alert('Opción no válida');
                     continue;
                 }else if (sexo === 1) {
-                    datos(person,sexo,age);
+                    datos(person,sexo);
                     let sex = 'hombre';
                     person.push(sex);
                     console.table(person);
                     personas.push(person);
                     contHombres=contHombres+1;
                 } else if (sexo === 2) {
-                    datos(person,sexo,age);
+                    datos(person,sexo);
                     let sex = 'mujer';
                     person.push(sex);
                     console.table(person);
@@ -111,14 +112,21 @@ do{
             break;
         case 4:
             //menores
-            
+            for(let i of ages){   
+                if (i < 18){ 
+                    contmenores++;
+                }else{
+                    continue;
+                }
+            }
+            alert(`hay ${contmenores} menores registrados`);
             break;
         case 5:
             //escala de sobrepeso
             break;
         case 6:
             //menor imc
-            alert(`El menor IMC es de: ${imcmenor}`);
+            alert(`El menor IMC es de: ${imcMEnor}`);
             break;
         case 7:
             break;
