@@ -9,10 +9,14 @@ const MensajeEdad = 'Ingrese su edad';
 alert(MensajeBienv);
 let imcMEnor = 0;
 let imcr = '';
-let imcmenor =0;
+let imcmenor =99;
 let contMujeres = 0;
 let contHombres = 0;
 let contmenores = 0;
+let mujeres = [];
+let hombres =[];
+let contmujersobre = 0;
+let conthombresobre = 0;
 let personas = [];
 let person =[];
 let continuar = true;
@@ -23,32 +27,35 @@ let contedadm = 0;
 let contpersonas = 0;
 let op =0;
 let age = 0;
+let genero = 0;
 const ImcMenor = function(imc){
     if (imc<imcmenor){
         imcmenor=imc;
     }else{
         imcmenor=imcmenor;
     }
+    console.log(imcmenor);
     return imcmenor;
 }
-const datos=function(person, sexo){
+const datos=function(person, genero){
     let name = prompt(MensajeNombre);
     person.push(name);
     age = Number(prompt(MensajeEdad));
     person.push(age);
     ages.push(age);
-    console.table(ages)
-    if (sexo === 1) {
+    console.table(ages);
+    if (genero === 1) {
         contedadm=contedadm+age;
-        console.log(contedadm)
-    }else if (sexo === 2){
+        console.log(contedadm);
+    }else if (genero === 2){
         contedadf=contedadf+age;
-        console.log(contedadf)
+        console.log(contedadf);
     }
     let peso = Number(prompt(MensajePeso));
     let altura = Number(prompt(MensajeAltura));
     let imc = peso / (altura ** 2);
     imcMEnor=ImcMenor(imc);
+    console.log(imcMEnor);
     person.push(imc);
     let mensajeIMC = `Su IMC es de: ${imc} `;
     if (imc < 19.8) {
@@ -78,22 +85,24 @@ do{
                 person = [];
                 id = Number(prompt('Ingrese su ID (numero de identificación:)'));
                 person.push(id);
-                let sexo = Number(prompt('Diga su sexo:\n1) Hombre\n2) Mujer'));
-                if (sexo !== 1 && sexo !== 2) {
+                genero = Number(prompt('Diga su genero:\n1) Hombre\n2) Mujer'));
+                if (genero !== 1 && genero !== 2) {
                     alert('Opción no válida');
                     continue;
-                }else if (sexo === 1) {
-                    datos(person,sexo);
-                    let sex = 'hombre';
-                    person.push(sex);
+                }else if (genero === 1) {
+                    datos(person,genero);
+                    let gender = 'hombre';
+                    person.push(gender);
                     console.table(person);
+                    hombres.push(person);
                     personas.push(person);
                     contHombres=contHombres+1;
-                } else if (sexo === 2) {
-                    datos(person,sexo);
-                    let sex = 'mujer';
-                    person.push(sex);
+                } else if (genero === 2) {
+                    datos(person,genero);
+                    let gender = 'mujer';
+                    person.push(gender);
                     console.table(person);
+                    mujeres.push(person);
                     personas.push(person);
                     contMujeres=contMujeres+1;
                 }
@@ -123,6 +132,23 @@ do{
             break;
         case 5:
             //escala de sobrepeso
+            for (let s = 0; s < mujeres.length; s++) {
+                let a = mujeres[s].indexOf('sobrepeso');
+                if (a === 4) {
+                    contmujersobre+=1;
+                }else{
+                    continuar;
+                }
+            }
+            for (let r = 0; r < hombres.length; r++) {
+                let b = hombres[r].indexOf('sobrepeso');
+                if (b === 4) {
+                    conthombresobre+=1;
+                }else{
+                    continuar;
+                }
+            }
+            alert(`Hay ${contmujersobre} mujeres en sobrepeso \nHay ${conthombresobre} hombres en sobrepeso`);
             break;
         case 6:
             //menor imc
@@ -134,64 +160,3 @@ do{
             continuar
     }
 } while (op!==7);
-// const datos = function(person){
-    // let name = prompt(MensajeNombre);
-    // person.push(name);
-    // let age = prompt(MensajeEdad);
-    // person.push(age)
-    // let peso = Number(prompt(MensajePeso));
-    // let altura = Number(prompt(MensajeAltura));
-    // let imc = peso / (altura ** 2);
-    // let mensajeIMC = `Su IMC es de: . `;
-    // if (imc < 19.8) {
-    //     imcr = 'bajo peso';
-    //     mensajeIMC = '¡Está en bajo peso!';
-    // } else if (imc >= 19.9 && imc <= 26) {
-    //     imcr = 'peso normal';
-    //     mensajeIMC = '¡Felicidades! Su peso es normal.';
-    // } else if (imc >= 26.1 && imc <= 29) {
-    //     imcr = 'sobrepeso';
-    //     mensajeIMC = '¡Tenga precaución! Está en sobrepeso.';
-    // } else if (imc >= 29.1) {
-    //     imcr = 'obesidad';
-    //     mensajeIMC = '¡Cuidado! Está en obesidad.';
-    // }
-    // alert(mensajeIMC);
-    // person.push(imcr);
-    // console.table(person);
-    // return age,person;
-// }
-// do {
-//     person = [];
-//     counter++;
-//     person.push(counter);
-//     let sexo = Number(prompt('Diga su sexo:\n1) Hombre\n2) Mujer'));
-//     if (sexo !== 1 && sexo !== 2) {
-//         alert('Opción no válida');
-//         continue;
-//     }
-    
-    // if (sexo === 1) {
-    //     datos(person);
-    //     console.log(age);
-    //     contedadm=contedadm+age;
-    //     let sex = 'hombre';
-    //     person.push(sex);
-    //     contHombres++;
-    // } else if (sexo === 2) {
-    //     datos(person);
-    //     contedadf=contedadf+age;
-    //     let sex = 'mujer';
-    //     person.push(sex);
-    //     contMujeres++;
-    // }
-//     contepersonas++;
-//     console.log(contedadf,contedadm,contpersonas)
-//     personas.push(person);
-//     continuar = confirm('¿Desea ingresar otra persona?');
-// } while (continuar);
-// console.table(personas)
-// alert(`${personas}`);
-// alert(`Cantidad de mujeres ingresadas: ${contMujeres}\nCantidad de hombres ingresados: ${contHombres}`);
-// alert(`El promediode edades de las mujeres es: ${contedadf/contpersonas}`);
-// alert(`El promediode edades de los hombres es: ${contedadm/contpersonas}`);
