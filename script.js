@@ -7,11 +7,27 @@ const MensajeResul = 'Su IMC es de:';
 const MensajeNombre = 'Ingrese su nombre';
 const MensajeEdad = 'Ingrese su edad';
 alert(MensajeBienv);
-let imcMEnor,contMujeres,contHombres,contmenores,contmujersobre,conthombresobre,id,contedadf,contedadm,contpersonas,op,age,genero = 0;
+let imcMEnor = 0;
 let imcr = '';
 let imcmenor =99;
-let mujeres,hombres,personas,person,ages = [];
+let contMujeres = 0;
+let contHombres = 0;
+let contmenores = 0;
+let mujeres = [];
+let hombres =[];
+let contmujersobre = 0;
+let conthombresobre = 0;
+let personas = [];
+let person =[];
 let continuar = true;
+let id = 0;
+let ages = [];
+let contedadf = 0;
+let contedadm = 0;
+let contpersonas = 0;
+let op =0;
+let age = 0;
+let genero = 0;
 const ImcMenor = function(imc){
     if (imc<imcmenor){
         imcmenor=imc;
@@ -132,6 +148,7 @@ do{
                     continuar;
                 }
             }
+
             alert(`Hay ${contmujersobre} mujeres en sobrepeso \nHay ${conthombresobre} hombres en sobrepeso`);
             break;
         case 6:
